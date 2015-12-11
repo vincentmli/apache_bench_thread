@@ -1,0 +1,11 @@
+#! /bin/sh
+#
+# Created by configure
+
+"./configure" \
+"--prefix=/usr/local" \
+"make" \
+"build_alias=make" \
+"host_alias=make" \
+"target_alias=make" \
+"$@"

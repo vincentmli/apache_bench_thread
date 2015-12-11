@@ -1,0 +1,57 @@
+========================================================================
+ README for ab
+========================================================================
+
+We provide ApachBenchmark to ease benchmarking against mTCP-based 
+servers. This package only contains the source code of ab and required 
+APR library, not the full code of Apach Server Project. We patched 
+ab to be multi-threaded and to be scalable to make use of multicore 
+systems. See the section "Usage" for detailed instruction for using it.
+
+========================================================================
+ Configuration
+========================================================================
+
+
+*****Vincent Li ubuntu build note*****
+1 install libnuma-dev libssl-dev (maybe libpcre as well) 
+2 compile libapr first
+#cd srclib/apr; ./configure --prefix=/usr/local  make ; make install
+
+3 compile apr-util
+#cd srclib/apr-util; ./configure --prefix=/usr/local --with-apr="../apr"; make ; make install
+
+4 now compile ab (install libssl or if you have custom built ssl use --with-ssl to point to custom built ssl directory)
+
+./configure --prefix=/usr/local --enable-ssl --with-ssl="/usr/local/ssl"  --with-apr="./srclib/apr" --with-apr-util="./srclib/apr-util" 
+
+
+========================================================================
+ Compilation
+========================================================================
+
+To use ab, execute "make" at this root directory.
+The ab will be generated in support/.
+
+========================================================================
+ Usage
+========================================================================
+
+The options that we added for mTCP-version and multi-threaded version:
+ -N cores : Number of cores to use. 
+            This should be greater than the # concurrency.
+ -l ports : Number of TCP ports to use. It can be used when you wish to 
+            use different port for different flows. Port number starts 
+            from 80, so when you give '-l 4' option, ab will use port 
+            80, 81, 82, and 83.
+
+All other options are listed when you execute ab without any argument.
+
+Example:
+$ ./ab -N 8 -c 1000 -n 10000000 10.0.0.43/test.txt
+
+
+========================================================================
+
+                   Contact: vincent.mc.li at gmail.com 
+                               Dec 11, 2015. 
