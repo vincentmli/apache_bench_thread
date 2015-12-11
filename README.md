@@ -4,6 +4,7 @@ Multithread/core ApacheBench Packages extracted from mTCP with SSL test addition
 Ubuntu build note
 
 1 install libnuma-dev libssl-dev (maybe libpcre as well)
+
 2 compile libapr first
 #cd srclib/apr; ./configure --prefix=/usr/local  make ; make install
 
@@ -14,7 +15,7 @@ Ubuntu build note
 
 ./configure --prefix=/usr/local --enable-ssl --with-ssl="/usr/local/ssl"  --with-apr="./srclib/apr" --with-apr-util="./srclib/apr-util"
 
-5 run ab
+5 run ab  with 4 thread/cores
 
-#ab -N <number of cores> -n <number of connections> -c <concurren connections> http/https://url/
+ab -N 4 -n 32 -c 4 https://url/
 
