@@ -6,7 +6,7 @@ Ubuntu build note
 1 install libnuma-dev libssl-dev (maybe libpcre as well)
 
 2 compile libapr first
-#cd srclib/apr; ./configure --prefix=/usr/local  make ; make install
+#cd srclib/apr; ./configure --prefix=/usr/local;  make ; make install
 
 3 compile apr-util
 #cd srclib/apr-util; ./configure --prefix=/usr/local --with-apr="../apr"; make ; make install
