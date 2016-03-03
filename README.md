@@ -5,6 +5,14 @@ Ubuntu build note
 
 1 install libnuma-dev libssl-dev (maybe libpcre as well)
 
+Note when build your own OpenSSL library, add "shared" to build both static and shared library:
+
+tested openssl-1.0.2g with below
+#./config shared
+#make depend
+#make
+#make install
+
 2 compile libapr first
 #cd srclib/apr; ./configure --prefix=/usr/local;  make ; make install
 
