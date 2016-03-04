@@ -13,6 +13,19 @@ tested openssl-1.0.2g with below
 #make
 #make install
 
+add /usr/local/ssl/lib to be included in /etc/ld.so.conf
+for example:
+#cat /etc/ld.so.conf
+include /etc/openssl.so.conf
+include /etc/ld.so.conf.d/*.conf
+# cat /etc/openssl.so.conf
+/usr/local/ssl/lib
+then 
+
+#ldconfig
+
+this will make ab linked with the new build OpenSSL library.
+
 2 compile libapr first
 #cd srclib/apr; ./configure --prefix=/usr/local;  make ; make install
 
